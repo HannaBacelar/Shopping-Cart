@@ -5,10 +5,10 @@ function createProductImageElement(imageSource) {
   return img;
 }
 function createCustomElement(element, className, innerText) {
-  const create = document.createElement(element);
-  create.className = className;
-  create.innerText = innerText;
-  return create;
+  const e = document.createElement(element);
+ e.className = className;
+ e.innerText = innerText;
+  return e;
 }
 function createProductItemElement({ sku, name, image }) {
   const section = document.createElement('section');
@@ -46,8 +46,8 @@ async function check() {
   });
 }
 function eventInButton() {
-  const takeComputer = document.querySelectorAll('.item');
-  takeComputer.forEach((item) => {
+  const capturaComputador = document.querySelectorAll('.item');
+  capturaComputador.forEach((item) => {
     const sku = getSkuFromProductItem(item);
     const takeButton = item.querySelector('button');
     takeButton.addEventListener('click', async () => {
@@ -57,8 +57,8 @@ function eventInButton() {
         name: obj.title,
         salePrice: obj.price,
       };
-      const sec = document.querySelector('.cart__items');
-      sec.appendChild(createCartItemElement(create));
+      const sectionOl = document.querySelector('.cart__items');
+      sectionOl.appendChild(createCartItemElement(create));
     });
   });
 }
