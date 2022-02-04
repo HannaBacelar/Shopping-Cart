@@ -98,7 +98,7 @@ function carregaTexto() {
   function loading() {
   document.querySelector('.loading').remove();
   } 
-
+  
 window.onload = async () => {
   carregaTexto();
   await addItemsLista();
