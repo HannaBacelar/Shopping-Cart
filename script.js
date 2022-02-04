@@ -41,7 +41,7 @@ function createCartItemElement({ sku, name, salePrice }) {
   li.addEventListener('click', cartItemClickListener);
   return li;
 }
-async function check() {
+async function addItemsLista() {
   const computer = await fetchProducts('computador');
   computer.results.forEach((product) => {
     const object = {
@@ -88,8 +88,21 @@ function limpaBotão() {
 }
 capturaBotão.addEventListener('click', limpaBotão);
 
+function carregaTexto() {
+  const section = document.createElement('section');
+  section.innerText = 'carregando...';
+  section.className = 'loading';
+  document.querySelector('.items').appendChild(section);
+  }
+  
+  function loading() {
+  document.querySelector('.loading').remove();
+  } 
+
 window.onload = async () => {
-  await check();
+  carregaTexto();
+  await addItemsLista();
   eventInButton();
   CapturaLocaLStorange();
+  loading();
 };
