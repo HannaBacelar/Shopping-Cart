@@ -34,6 +34,7 @@ function cartItemClickListener(event) {
   salveItemLocalStorage();
 }
 
+
 function createCartItemElement({ sku, name, salePrice }) {
   const li = document.createElement('li');
   li.className = 'cart__item';
@@ -75,11 +76,12 @@ function CapturaLocaLStorange() {
 
   if (saved) {
     ol.innerHTML = saved; 
-    document.querySelectorAll('cart__item').forEach((li) => {
+    document.querySelectorAll('.cart__item').forEach((li) => {
       li.addEventListener('click', cartItemClickListener);
     });
   }
 }
+// AJUDA Roverval //
 
 const capturaBotão = document.querySelector('.empty-cart');
 function limpaBotão() {
