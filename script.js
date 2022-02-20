@@ -1,4 +1,35 @@
 const ol = document.querySelector('.cart__items'); 
+let somaTotal = 0; 
+
+function obtendoPreço () {
+  const capturaCart = document.querySelector('.cart');
+  const creatP = document.createElement('p');
+  const creatSpan = document.createElement('span');
+
+  creatP.innerHTML = 'Sub-total: R$';
+  creatSpan.className = 'total-price';
+  capturaCart.appendChild(creatP);
+  creatP.appendChild(creatSpan);
+}
+function somaPreços() {
+  const capturaTotalPrice = document.querySelector('.total-price');
+  let olText = ol.innerText;
+  let resultSoma = 0;
+
+  olText = olText.match(/\$[0-9]*.[0-9]*/g);
+
+  if (olText === 0 || olText === null) {
+  capturaTotalPrice.innerText = 0;
+  } else {
+    olText.forEach((preço) => {
+      resultSoma += +preço.slice(1);
+    });
+    somaTotal = resultSoma;
+
+ capturaTotalPrice.innerText = +somaTotal.toFixed(2);
+  }
+}
+// Ajuda do Erik Lima // 
 
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
@@ -32,6 +63,7 @@ function salveItemLocalStorage() {
 function cartItemClickListener(event) {
   event.target.remove();
   salveItemLocalStorage();
+  somaPreços();
 }
 
 function createCartItemElement({ sku, name, salePrice }) {
@@ -67,6 +99,7 @@ function eventInButton() {
       };
       ol.appendChild(createCartItemElement(create));
       salveItemLocalStorage();
+      somaPreços();
     });
   });
 }
@@ -86,6 +119,7 @@ const capturaBotão = document.querySelector('.empty-cart');
 function limpaBotão() {
    ol.innerHTML = '';
   salveItemLocalStorage();
+  somaPreços();
 }
 capturaBotão.addEventListener('click', limpaBotão);
 
@@ -106,4 +140,6 @@ window.onload = async () => {
   eventInButton();
   CapturaLocaLStorange();
   loading();
+  obtendoPreço();
+  somaPreços();
 };
