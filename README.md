@@ -16,7 +16,7 @@ O projeto tem a interface de uma loja online, com a possibilidade de somar produ
   1. Clone o repositório
   - git  clone git@github.com:HannaBacelar/Shopping-Cart.git
   3. Entre na pasta do repositório clonado
-  - cd protect-shopping-Cart
+  - cd project-shopping-Cart
   5. Instale as dependencias 
    - npm install 
   6. Abra com o live share
